@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Employee Lifecycle Analytics case study by Tatiana Khromova." />
+  <title>Employee Lifecycle Analytics | Tatiana Khromova</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand-mark">TK</span><span>Tatiana Khromova</span></a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav-links"><a href="../index.html#work">Work</a><a href="../index.html#approach">Approach</a><a href="../index.html#profile">Profile</a><a href="../index.html#contact">Contact</a></nav></div></header>
+<main>
+<section class="project-hero"><div class="container">
+  <a class="back-link" href="../index.html#work">Back to projects</a>
+  <div class="eyebrow">Employee Lifecycle · Data Quality · People Analytics</div>
+  <h1>Employee Lifecycle Analytics</h1>
+  <p class="lead">What can we learn when workforce, engagement, training and recruitment data are analyzed together — and how much can we trust the underlying data?</p>
+  <div class="stat-strip">
+    <div class="stat"><strong>3 000</strong><span>employee records</span></div>
+    <div class="stat"><strong>991</strong><span>source-status inconsistencies</span></div>
+    <div class="stat"><strong>55.4%</strong><span>valid survey records</span></div>
+    <div class="stat"><strong>2.60×</strong><span>&lt;1 year tenure signal</span></div>
+  </div>
+  <figure class="project-cover"><img src="../assets/images/lifecycle-data-trust.png" alt="Employee Lifecycle Analytics data trust dashboard" /></figure>
+</div></section>
+
+<section class="section"><div class="container case-layout">
+  <div class="case-content">
+    <section class="case-section" id="question"><span class="pill-note">Business question</span><h2>A lifecycle view, not an attrition-only dashboard</h2>
+      <p>The project uses one Kaggle HR dataset containing four 3,000-row source tables — employee, engagement survey, training & development and recruitment — across data trust, workforce movement, exits, employee experience, learning & development and recruitment.</p>
+      <p>The analytical workflow includes SQL-based data-quality auditing, Power Query validation, Power BI modeling, DAX, Decomposition Tree, Key Influencers, heatmaps and segmentation.</p>
+    </section>
+
+    <section class="case-section" id="trust"><span class="pill-note">Data trust</span><h2>Several source fields could not be used at face value</h2>
+      <table class="data-table"><thead><tr><th>Issue</th><th>Finding</th></tr></thead><tbody>
+        <tr><td>Employment status</td><td>991 employees marked Active also had an Exit Date</td></tr>
+        <tr><td>Survey timing</td><td>1 662 valid surveys — 55.4%</td></tr>
+        <tr><td>Training timing</td><td>1 683 valid records — 56.1%</td></tr>
+        <tr><td>Recruitment linkage</td><td>No reliable candidate-to-employee key</td></tr>
+      </tbody></table>
+      <p>A clean employment status was therefore derived from ExitDate. Survey and training records were validated against the employee's employment period and only valid records were used in experience and L&D measures.</p>
+      <p class="callout">The recruitment table remains disconnected. Overlapping IDs and names did not produce a reliable employee link, so the limitation was kept visible instead of forcing a relationship into the model.</p>
+    </section>
+
+    <section class="case-section" id="model"><span class="pill-note">Data model</span><h2>Model choices follow the lifecycle logic</h2>
+      <p>The employee table is the central workforce table, with 1:1 relationships to cleaned engagement and training tables. A dedicated date table uses StartDate as the active relationship and ExitDate as an inactive relationship activated in exit measures through <code>USERELATIONSHIP</code>.</p>
+      <p>Separate measure tables keep workforce, engagement, training, recruitment and data-quality logic organized.</p>
+    </section>
+
+    <section class="case-section" id="findings"><span class="pill-note">Key findings</span><h2>Early tenure dominates, but the pattern changes later</h2>
+      <ul>
+        <li>In the full employee population, employees with less than one year of tenure have a 70.4% exit rate.</li>
+        <li>Within the valid-survey population, tenure below one year is the strongest Key Influencers signal at 2.60×.</li>
+        <li>Work-Life Balance ≤ 2 is a secondary Key Influencers signal at 1.27×.</li>
+        <li>In the valid-survey subset, first-year exit is 50.0% outside Production and 37.8% in Production.</li>
+        <li>A later-tenure Production segment with Work-Life Balance ≤ 2 has a 27.6% exit rate across 192 employees versus a 20.5% baseline for the valid-survey population.</li>
+      </ul>
+      <p class="callout warn">The 70.4% first-year rate and the 50.0% / 37.8% segment rates use different analytical populations. They should not be compared as if they had the same denominator.</p>
+    </section>
+
+    <section class="case-section" id="ld"><span class="pill-note">L&D & recruitment</span><h2>Context matters more than one headline metric</h2>
+      <p>Training outcomes vary by program rather than moving in one consistent direction. For example, Technical Skills shows 15.8% exit among Passed records versus 29.4% among Incomplete records, while Leadership Development shows 16.7% versus 26.2%. These are associations, not causal claims.</p>
+      <p>Recruitment is analyzed independently. Offer rates by education are tightly clustered at 19.1%–22.3%, and no strong standalone predictor of offer status was identified among the tested candidate characteristics.</p>
+    </section>
+
+    <section class="case-section" id="recommendations"><span class="pill-note">Business use</span><h2>Where the analysis points next</h2>
+      <ul>
+        <li>Prioritize first-year retention analysis across onboarding, manager support, expectations and early feedback.</li>
+        <li>Investigate first-year Non-Production exits separately rather than applying one organization-wide explanation.</li>
+        <li>Use work-life balance as a context-dependent risk signal alongside tenure and workforce segment.</li>
+        <li>Evaluate L&D at Program × Outcome × Retention level.</li>
+        <li>Improve HR data architecture with stable IDs, candidate-to-hire mapping, effective-dated status history and temporal validation rules.</li>
+      </ul>
+    </section>
+
+    <section class="case-section" id="limitations"><span class="pill-note">Limitations</span><h2>Where the data sets the boundary</h2>
+      <ul>
+        <li>Recruitment cannot be reliably linked to employees.</li>
+        <li>2023 is a partial year ending August 6.</li>
+        <li>Small segments can produce visually high rates.</li>
+        <li>Key Influencers and segmentation identify associations, not causation.</li>
+        <li>Training and engagement analyses use only records validated against the employment period.</li>
+      </ul>
+    </section>
+
+    <section class="case-section" id="gallery"><span class="pill-note">Dashboard</span><h2>Six analytical views</h2>
+      <div class="gallery">
+        <figure><img src="../assets/images/lifecycle-data-trust.png" alt="Data Trust and Overview" loading="lazy"><figcaption>Data Trust & Overview — workforce status and source-data consistency.</figcaption></figure>
+        <figure><img src="../assets/images/lifecycle-workforce-movement.png" alt="Workforce Movement and Trends" loading="lazy"><figcaption>Workforce Movement & Trends — hires, exits, active headcount and net change.</figcaption></figure>
+        <figure><img src="../assets/images/lifecycle-exit-exploration.png" alt="Exit Exploration" loading="lazy"><figcaption>Exit Exploration — decomposition tree and tenure segmentation.</figcaption></figure>
+        <figure><img src="../assets/images/lifecycle-employee-experience.png" alt="Employee Experience" loading="lazy"><figcaption>Employee Experience — valid-survey population, heatmap and Key Influencers.</figcaption></figure>
+        <figure><img src="../assets/images/lifecycle-learning-development.png" alt="Learning and Development" loading="lazy"><figcaption>Learning & Development — program, cost, outcome and exit-rate patterns.</figcaption></figure>
+        <figure><img src="../assets/images/lifecycle-recruitment-market.png" alt="Recruitment Market" loading="lazy"><figcaption>Recruitment Market — analyzed separately because a reliable employee linkage was not available.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="case-section"><h2>Technical details</h2><p>Tools: MySQL · DBeaver · Power Query · Power BI · DAX.</p><div class="hero-actions"><a class="btn btn-primary" href="https://tatiana-khromova.github.io/employee-lifecycle-analytics/" target="_blank" rel="noopener">Interactive dashboard ↗</a><a class="btn btn-secondary" href="https://github.com/tatiana-khromova/employee-lifecycle-analytics" target="_blank" rel="noopener">View repository ↗</a></div></section>
+  </div>
+  <aside class="case-aside"><h3>On this page</h3><a href="#question">Business question</a><a href="#trust">Data trust</a><a href="#model">Data model</a><a href="#findings">Findings</a><a href="#ld">L&D & recruitment</a><a href="#recommendations">Business use</a><a href="#limitations">Limitations</a><a href="#gallery">Dashboard</a></aside>
+</div></section>
+</main>
+<footer class="footer"><div class="container footer-inner"><span>© <span data-year></span> Tatiana Khromova</span><a href="../index.html">Portfolio home</a></div></footer>
+<script src="../assets/js/main.js"></script>
+</body></html>

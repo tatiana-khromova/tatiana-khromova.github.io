@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="HR Attrition Analysis case study by Tatiana Khromova." />
+  <title>HR Attrition Analysis | Tatiana Khromova</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand-mark">TK</span><span>Tatiana Khromova</span></a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav-links"><a href="../index.html#work">Work</a><a href="../index.html#approach">Approach</a><a href="../index.html#profile">Profile</a><a href="../index.html#contact">Contact</a></nav></div></header>
+<main>
+<section class="project-hero"><div class="container">
+  <a class="back-link" href="../index.html#work">Back to projects</a>
+  <div class="eyebrow">Attrition · Workforce Analytics · SQL + Power BI</div>
+  <h1>HR Attrition Analysis</h1>
+  <p class="lead">A focused retention analysis designed to move from “what is happening?” to “where should the organization investigate further?” without mistaking correlation for explanation.</p>
+  <div class="stat-strip">
+    <div class="stat"><strong>311</strong><span>employees</span></div>
+    <div class="stat"><strong>104</strong><span>terminated employees</span></div>
+    <div class="stat"><strong>33.44%</strong><span>overall attrition rate</span></div>
+    <div class="stat"><strong>62.96%</strong><span>1–3 year tenure attrition</span></div>
+  </div>
+  <figure class="project-cover"><img src="../assets/images/attrition-overview.png" alt="HR Attrition Analysis overview dashboard" /></figure>
+</div></section>
+
+<section class="section"><div class="container case-layout">
+  <div class="case-content">
+    <section class="case-section" id="question"><span class="pill-note">Business question</span><h2>Where is attrition concentrated — and which patterns warrant deeper investigation?</h2>
+      <p>The project analyzes department, role, tenure, performance, satisfaction, salary, recruitment source, engagement, manager and attendance patterns. SQL was used to test the business questions, and Power BI was used to build the three-page report.</p>
+    </section>
+
+    <section class="case-section" id="structure"><span class="pill-note">Report design</span><h2>Three pages, three levels of the question</h2>
+      <ul>
+        <li><strong>Overview:</strong> What is happening?</li>
+        <li><strong>Workforce:</strong> Which workforce patterns stand out?</li>
+        <li><strong>Operational:</strong> Where should the organization investigate further?</li>
+      </ul>
+      <p>The Power BI report is organized across three pages with Department filtering and views covering overall attrition, workforce patterns and operational segments.</p>
+    </section>
+
+    <section class="case-section" id="findings"><span class="pill-note">Key findings</span><h2>Attrition is concentrated early and unevenly</h2>
+      <ul>
+        <li>Employees with <strong>1–3 years</strong> of service have a <strong>62.96% attrition rate</strong> (34 of 54 employees). Together with the very small &lt;1-year group, this makes early tenure the clearest retention pattern in the project.</li>
+        <li>The <strong>&lt;1 year</strong> group is higher at <strong>90.0%</strong> (9 of 10), but the group is very small and should be treated as a directional signal rather than a standalone conclusion.</li>
+        <li>Production has <strong>39.71% attrition</strong> across 209 employees, making it the largest workforce segment with elevated observed attrition.</li>
+        <li>Lower-paid groups generally show higher observed attrition than higher-paid groups, but compensation alone does not explain the pattern.</li>
+        <li>Employees who left averaged more absences (11.05 vs 9.83) and more late arrivals in the last 30 days (0.66 vs 0.29) than active employees. Attendance is therefore treated as a diagnostic signal, not a causal explanation.</li>
+      </ul>
+    </section>
+
+    <section class="case-section" id="recruitment"><span class="pill-note">Interpretation</span><h2>A recruitment-source result that changes after segmentation</h2>
+      <p>Attrition varies widely across recruitment sources: from 7.7% for Website hires to 61.2% for Google Search hires. At first glance that can look like a channel-quality problem.</p>
+      <p class="callout">Further analysis shows that 87.8% of employees hired through Google Search are Production Technicians. The source-level rate is therefore partly a workforce-composition effect rather than a clean measure of channel quality.</p>
+      <p>This is the core lesson of the project: HR context and segmentation matter before a descriptive rate becomes a business conclusion.</p>
+    </section>
+
+    <section class="case-section" id="recommendations"><span class="pill-note">Business use</span><h2>Where the organization should investigate</h2>
+      <ul>
+        <li>Review the first three years of the employee experience across recruitment, onboarding, probation, development and manager integration.</li>
+        <li>Evaluate recruitment sources using quality-of-hire and retention outcomes, not hiring volume alone.</li>
+        <li>Prioritize workforce segments with elevated observed attrition, especially Production and job roles with persistently high observed rates.</li>
+        <li>Compare composition within departments and job families before attributing a difference to one factor.</li>
+        <li>Track attendance, engagement and satisfaction as diagnostic signals for deeper review.</li>
+      </ul>
+    </section>
+
+    <section class="case-section" id="gallery"><span class="pill-note">Dashboard</span><h2>Three-page Power BI report</h2>
+      <div class="gallery">
+        <figure><img src="../assets/images/attrition-overview.png" alt="Attrition Overview" loading="lazy"><figcaption>Overview — overall attrition, department patterns and recruitment-source rates.</figcaption></figure>
+        <figure><img src="../assets/images/attrition-workforce.png" alt="Attrition Workforce" loading="lazy"><figcaption>Workforce — performance, salary group, satisfaction, tenure and engagement.</figcaption></figure>
+        <figure><img src="../assets/images/attrition-operational.png" alt="Attrition Operational" loading="lazy"><figcaption>Operational — position, manager and attendance patterns for further investigation.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="case-section"><h2>Technical details</h2><p>Tools: MySQL · DBeaver · SQL · Power BI · DAX · Power Query.</p><div class="hero-actions"><a class="btn btn-primary" href="https://github.com/tatiana-khromova/hr-attrition-analysis" target="_blank" rel="noopener">View repository ↗</a></div></section>
+  </div>
+  <aside class="case-aside"><h3>On this page</h3><a href="#question">Business question</a><a href="#structure">Report design</a><a href="#findings">Findings</a><a href="#recruitment">Interpretation</a><a href="#recommendations">Business use</a><a href="#gallery">Dashboard</a></aside>
+</div></section>
+</main>
+<footer class="footer"><div class="container footer-inner"><span>© <span data-year></span> Tatiana Khromova</span><a href="../index.html">Portfolio home</a></div></footer>
+<script src="../assets/js/main.js"></script>
+</body></html>

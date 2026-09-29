@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Compensation & Pay Equity Analytics case study by Tatiana Khromova." />
+  <title>Compensation & Pay Equity Analytics | Tatiana Khromova</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand-mark">TK</span><span>Tatiana Khromova</span></a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button><nav class="nav-links"><a href="../index.html#work">Work</a><a href="../index.html#approach">Approach</a><a href="../index.html#profile">Profile</a><a href="../index.html#contact">Contact</a></nav></div></header>
+<main>
+<section class="project-hero"><div class="container">
+  <a class="back-link" href="../index.html#work">Back to projects</a>
+  <div class="eyebrow">Compensation · Pay Equity · Scenario Modeling</div>
+  <h1>Compensation & Pay Equity Analytics</h1>
+  <p class="lead">A People Analytics / Compensation project focused on salary structure, internal pay-equity signals and the financial impact of broad and targeted compensation scenarios.</p>
+  <div class="stat-strip">
+    <div class="stat"><strong>96 900 → 95 000</strong><span>raw to analytical records</span></div>
+    <div class="stat"><strong>12</strong><span>currencies normalized to EUR</span></div>
+    <div class="stat"><strong>6.2%</strong><span>raw gender pay gap</span></div>
+    <div class="stat"><strong>€4.342B</strong><span>annual salary cost</span></div>
+  </div>
+  <figure class="project-cover"><img src="../assets/images/compensation-executive-overview.jpg" alt="Compensation and Pay Equity executive overview dashboard" /></figure>
+</div></section>
+
+<section class="section"><div class="container case-layout">
+  <div class="case-content">
+    <section class="case-section" id="question"><span class="pill-note">Business question</span><h2>From salary data to decision scenarios</h2>
+      <p>The analysis asks how salary is distributed across departments, roles and pay bands; whether a raw gender pay gap remains visible within more comparable job-related groups; which employees fall below an internal benchmark; and what different compensation actions would cost.</p>
+      <p class="callout warn"><strong>Scope:</strong> this is compensation analytics, not payroll analytics. The dataset does not contain payroll transactions, budget data or a historical payroll time series, so it is not used for payroll actuals, Budget vs Actual or forecasting.</p>
+    </section>
+
+    <section class="case-section" id="data"><span class="pill-note">Data trust</span><h2>Audit first, transform second</h2>
+      <p>The synthetic compensation data combines three source datasets and was loaded into MySQL before Power BI transformation so the raw structure could be audited independently.</p>
+      <table class="data-table"><thead><tr><th>Audit check</th><th>Result</th></tr></thead><tbody>
+        <tr><td>Raw records</td><td>96 900</td></tr><tr><td>Duplicate records excluded</td><td>1 900</td></tr><tr><td>Analytical records</td><td>95 000</td></tr><tr><td>Missing ethnicity</td><td>25.1%</td></tr><tr><td>Currencies</td><td>12</td></tr><tr><td>Hire-date formats</td><td>5</td></tr>
+      </tbody></table>
+      <p>Power Query then standardized categorical values and date formats, preserved missing data without artificial imputation, normalized salary values to EUR through a separate FX dimension and created analytical / quality flags.</p>
+    </section>
+
+    <section class="case-section" id="method"><span class="pill-note">Methodology</span><h2>Comparable groups instead of one raw gap</h2>
+      <p>A raw gender pay gap is descriptive; it does not demonstrate unequal pay for equal work. The comparable-group analysis therefore compares employees within groups defined by <strong>Department + Job Title + Experience Band + Performance Rating</strong>.</p>
+      <p>Eligible gender-gap groups require at least 30 employees in total, including at least 10 Male and 10 Female employees. The final department-level measure is a weighted median gender pay gap across eligible groups.</p>
+      <p class="callout">Across departments, the weighted median comparable-group gaps are approximately <strong>5.7%–7.5%</strong>. They are treated as screening signals for further review, not evidence of discrimination or a causal finding.</p>
+    </section>
+
+    <section class="case-section" id="scenarios"><span class="pill-note">Scenario modeling</span><h2>What different compensation actions cost</h2>
+      <p>Three scenarios separate different business questions: a broad general increase, a targeted adjustment to internal P50, and a combined approach.</p>
+      <table class="data-table"><thead><tr><th>Scenario</th><th>Incremental cost</th><th>Interpretation</th></tr></thead><tbody>
+        <tr><td>10% General Increase</td><td>€434.2M</td><td>Broad company-wide increase</td></tr>
+        <tr><td>Targeted P50 Adjustment</td><td>€303.7M</td><td>42 702 eligible employees below comparable-group P50</td></tr>
+        <tr><td>Combined</td><td>€768.2M</td><td>Targeted adjustment followed by 10% general increase</td></tr>
+      </tbody></table>
+      <p class="callout warn">The full P50 scenario is a modeling envelope, not an automatic recommendation to adjust every below-median salary.</p>
+    </section>
+
+    <section class="case-section" id="findings"><span class="pill-note">Key findings</span><h2>What the analysis shows</h2>
+      <ul>
+        <li>Data quality materially affects compensation analysis: 1 900 validated duplicates were excluded before modeling.</li>
+        <li>Approximately 78.5% of employees are concentrated in Bands 1–2, while upper bands are sparsely populated.</li>
+        <li>Median salary and IQR vary across pay bands and departments, so one organization-wide average is not enough to understand structure.</li>
+        <li>The raw gender pay gap is 6.2%, but comparable-group analysis is the more defensible screening layer.</li>
+        <li>Broad and targeted compensation scenarios answer different business questions and produce materially different cost profiles.</li>
+      </ul>
+    </section>
+
+    <section class="case-section" id="limitations"><span class="pill-note">Limitations</span><h2>What the project does not claim</h2>
+      <ul>
+        <li>The dataset is synthetic and does not describe a real employer or labor market.</li>
+        <li>Comparable-group gaps indicate differences or potential equity signals; they do not establish discrimination.</li>
+        <li>FX normalization uses a fixed analytical snapshot dated 03 Sep 2026, not historical exchange rates.</li>
+        <li>Relevant compensation determinants may be missing from the dataset.</li>
+        <li>Extreme salary values are flagged for review rather than automatically treated as errors.</li>
+      </ul>
+    </section>
+
+    <section class="case-section" id="gallery"><span class="pill-note">Dashboard</span><h2>Three-page Power BI report</h2>
+      <div class="gallery">
+        <figure><img src="../assets/images/compensation-executive-overview.jpg" alt="Executive Overview" loading="lazy"><figcaption>Executive Overview — workforce, salary cost, median salary, raw gender pay gap and data-quality context.</figcaption></figure>
+        <figure><img src="../assets/images/compensation-structure.jpg" alt="Compensation Structure" loading="lazy"><figcaption>Compensation Structure — salary distribution, median / IQR, department medians and role representation.</figcaption></figure>
+        <figure><img src="../assets/images/compensation-pay-equity.jpg" alt="Pay Equity and Scenarios" loading="lazy"><figcaption>Pay Equity & Scenarios — comparable-group signals and broad vs targeted cost modeling.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="case-section"><h2>Technical details</h2><p>Tools: MySQL · DBeaver · Power Query · Power BI · DAX.</p><div class="hero-actions"><a class="btn btn-primary" href="https://tatiana-khromova.github.io/compensation-pay-equity-analytics/" target="_blank" rel="noopener">Interactive dashboard ↗</a><a class="btn btn-secondary" href="https://github.com/tatiana-khromova/compensation-pay-equity-analytics" target="_blank" rel="noopener">View repository ↗</a></div></section>
+  </div>
+  <aside class="case-aside"><h3>On this page</h3><a href="#question">Business question</a><a href="#data">Data trust</a><a href="#method">Methodology</a><a href="#scenarios">Scenarios</a><a href="#findings">Findings</a><a href="#limitations">Limitations</a><a href="#gallery">Dashboard</a></aside>
+</div></section>
+</main>
+<footer class="footer"><div class="container footer-inner"><span>© <span data-year></span> Tatiana Khromova</span><a href="../index.html">Portfolio home</a></div></footer>
+<script src="../assets/js/main.js"></script>
+</body></html>
